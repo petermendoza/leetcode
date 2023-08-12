@@ -9,22 +9,28 @@ using namespace std;
  */
 
 // @lc code=start
-class Solution {
+class Solution
+{
 public:
-    int lengthOfLongestSubstring(string s) {
-        int count=0;
-        int ans=0;
-        int j=0;
-        unordered_map<char,bool> map;
-        for(int i = 0; i < s.size(); i++){
-            if(!map.count(s[i])){
+    int lengthOfLongestSubstring(string s)
+    {
+        int count = 0;
+        int ans = 0;
+        int j = 0;
+        unordered_map<char, bool> map;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (!map.count(s[i]))
+            {
                 count++;
                 map[s[i]] = true;
             }
-            else{
-                if(count>ans)
+            else
+            {
+                if (count > ans)
                     ans = count;
-                while(s[j]!=s[i]) {
+                while (s[j] != s[i])
+                {
                     count--;
                     map.erase(s[j]);
                     j++;
@@ -32,8 +38,7 @@ public:
                 j++;
             }
         }
-        return max(ans,count);
+        return max(ans, count);
     }
 };
 // @lc code=end
-
